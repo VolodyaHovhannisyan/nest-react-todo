@@ -51,16 +51,35 @@ const MainComponent = () => {
       text,
       day,
       done: false,
-      id: Math.floor(Math.random() * 10000)
+      id: Math.floor(Math.random() * 100000)
     }
 
     setTodos((prev) => [...prev, todo])
   }
- 
+
+  const deleteTodo = (id) => {
+    console.log('del id', id);
+    setTodos(todos.filter((todo) => todo.id !== id))
+    alert('Todo was deleted')
+
+  }
+
+  const toggleTodo = (id, e) => {
+    e.stopPropagation()
+    console.log('toggled id', id);
+    
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    )
+
+  }
+
   return (
     <Content>
       <FormComponent searchTodo={filterTodos} addTodo={addTodo} />
-      <TodoListComponent todos={filteredTodos || todos} />
+      <TodoListComponent toggleTodo={toggleTodo} onDelete={deleteTodo} todos={filteredTodos || todos} />
     </Content>
   )
 }

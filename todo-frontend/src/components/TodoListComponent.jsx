@@ -4,10 +4,10 @@ import TodoComponent from './TodoComponent';
 // const { } = Layout;
 
 
-const TodoListComponent = ({todos}) => {
+const TodoListComponent = ({todos, onDelete, toggleTodo}) => {
 
     return (
-        <TodoComponent todos={todos}/>
+        <TodoComponent todos={todos} onDelete={onDelete} toggleTodo={toggleTodo}/>
     )
 }
 
