@@ -1,3 +1,3 @@
 ### Description
 
-Current projects implements a simple Todo-list application developed with React and NestJS.
+Current project implements a simple Todo-list application developed with React and NestJS.
