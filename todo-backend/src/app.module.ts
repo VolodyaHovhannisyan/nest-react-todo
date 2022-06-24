@@ -8,7 +8,7 @@ import { TodosModule } from './todos/todos.module';
 @Module({
   imports: [
     TodosModule,
-    MongooseModule.forRoot(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@test.kiobp.mongodb.net/NestJS?retryWrites=true&w=majority`),
+    MongooseModule.forRoot(`mongodb+srv://volodya_hovhannisyan:+033334304+@test.kiobp.mongodb.net/NestJS?retryWrites=true&w=majority`),
     ConfigModule.forRoot()
   ],
   controllers: [AppController],
