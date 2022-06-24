@@ -1,11 +1,7 @@
-import { CheckCircleOutlined, CloseCircleOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { CheckCircleOutlined, CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 
 
 const TodoComponent = ({ todos, onDelete, toggleTodo }) => {
-
-    // const [data, setdata] = useState([...todos])
-
 
     return todos.map(todo => {
         return <div className='todo' key={todo.id} >

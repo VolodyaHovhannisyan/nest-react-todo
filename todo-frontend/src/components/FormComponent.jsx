@@ -6,7 +6,7 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [search, setSearch] = useState(true)
-    const [searchText, setSearchText] = useState('')
+    // const [searchText, setSearchText] = useState('')
 
     const onFinish = () => {
 
@@ -30,12 +30,10 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
 
     return (
         <>
-           {todos.length > 0 && <Button
+            {todos.length > 0 && <Button
                 className="m20"
                 block
                 onClick={() => setSearch(prev => !prev)}>{search && todos.length > 0 ? 'Add todo' : 'Search todo'}</Button>}
-            <h1>{text}</h1>
-            <h1>{day}</h1>
             {(search && todos.length > 0)
                 ?
                 <Input.Search
