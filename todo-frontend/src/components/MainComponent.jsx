@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import { useId, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import FormComponent from './FormComponent';
 import TodoListComponent from './TodoListComponent';
 const { Content } = Layout;
@@ -60,7 +60,6 @@ const MainComponent = () => {
   const deleteTodo = (id) => {
     console.log('del id', id);
     setTodos(todos.filter((todo) => todo.id !== id))
-    alert('Todo was deleted')
 
   }
 
@@ -76,9 +75,14 @@ const MainComponent = () => {
 
   }
 
+  useEffect(() => {
+    setFilteredTodos(todos)
+  }, [todos, setFilteredTodos])
+  
+
   return (
     <Content>
-      <FormComponent searchTodo={filterTodos} addTodo={addTodo} />
+      <FormComponent searchTodo={filterTodos} addTodo={addTodo} todos={todos} />
       <TodoListComponent toggleTodo={toggleTodo} onDelete={deleteTodo} todos={filteredTodos || todos} />
     </Content>
   )

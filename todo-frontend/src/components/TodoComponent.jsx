@@ -12,7 +12,7 @@ const TodoComponent = ({ todos, onDelete, toggleTodo }) => {
             {todo.done ?
              <CheckCircleOutlined onClick={(e) => toggleTodo(todo.id, e)} style={{ fontSize: '25px', color: 'green' }} />
              : <CloseCircleOutlined onClick={(e) => toggleTodo(todo.id, e)} style={{ fontSize: '25px', color: 'red' }} />}
-            <EditOutlined />
+            {/* <EditOutlined /> */}
             <h2>{todo.text}</h2>
             <p>{todo.day}</p>
             <CloseOutlined className='delete-todo' onClick={() => onDelete(todo.id)} />

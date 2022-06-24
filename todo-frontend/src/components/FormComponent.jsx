@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, DatePicker } from 'antd';
 
 
-const FormComponent = ({ searchTodo, addTodo }) => {
+const FormComponent = ({ searchTodo, addTodo, todos }) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [search, setSearch] = useState(true)
@@ -30,13 +30,13 @@ const FormComponent = ({ searchTodo, addTodo }) => {
 
     return (
         <>
-            <Button
+           {todos.length > 0 && <Button
                 className="m20"
                 block
-                onClick={() => setSearch(prev => !prev)}>{search ? 'Add todo' : 'Search todo'}</Button>
+                onClick={() => setSearch(prev => !prev)}>{search && todos.length > 0 ? 'Add todo' : 'Search todo'}</Button>}
             <h1>{text}</h1>
             <h1>{day}</h1>
-            {search
+            {(search && todos.length > 0)
                 ?
                 <Input.Search
                     placeholder="Search todo"
@@ -59,11 +59,16 @@ const FormComponent = ({ searchTodo, addTodo }) => {
                         />
                     </Form.Item>
                     <Form.Item label='Day & time' name={'day'}>
-                        <Input
+                        <DatePicker
                             name='day'
                             placeholder='Add Day & Time'
                             value={day}
-                            onChange={(e) => setDay(e.target.value)}
+                            showTime
+                            onChange={(date, dateString) => {
+                                console.log(date, dateString);
+                                setDay(dateString)
+                            }
+                            }
                             allowClear
                         />
                     </Form.Item>
