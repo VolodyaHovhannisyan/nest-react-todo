@@ -1,5 +1,5 @@
 import { TodosService } from './todos.service';
-import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Patch } from '@nestjs/common';
 
 @Controller('todos')
 export class TodosController {
@@ -11,7 +11,7 @@ export class TodosController {
   @Post()
   add() {}
 
-  @Put()
+  @Patch()
   update() {}
 
   @Delete()
