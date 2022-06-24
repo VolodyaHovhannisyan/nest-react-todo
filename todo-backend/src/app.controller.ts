@@ -7,8 +7,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    
-    return process.env.DATABASE_USERNAME 
-    // this.appService.getHello();
+    return this.appService.getHello();
   }
 }
