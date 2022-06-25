@@ -37,10 +37,10 @@ export class TodosService {
     return updatedTodo;
   }
 
-  async delete(todoId: string) {
-    const result = await this.todoModel.findByIdAndDelete(todoId);
+  async delete(id: string) {
+    const result = await this.todoModel.findByIdAndDelete(id);
     if (!result) {
-      throw new NotFoundException();
+      throw new NotFoundException('Something went wrong');
     }
     return "Success";
   }

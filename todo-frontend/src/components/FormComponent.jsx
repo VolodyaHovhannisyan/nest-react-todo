@@ -15,7 +15,7 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
             return
         }
 
-        console.log(text, day);
+        // console.log(text, day);
         addTodo(text, day)
 
         setText('')
@@ -63,7 +63,7 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
                             value={day}
                             showTime
                             onChange={(date, dateString) => {
-                                console.log(date, dateString);
+                                // console.log(date, dateString);
                                 setDay(dateString)
                             }
                             }
