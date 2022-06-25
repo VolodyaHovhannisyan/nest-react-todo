@@ -1,9 +1,14 @@
-import { ConflictException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CreateTodoDto } from './dto/todo.dto';
-import { UpdateTodoDto } from './dto/updateTodo.dto';
-import { Todo, TodoDocument } from './schemas/todo.schema';
+import {
+  ConflictException,
+  HttpException,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { CreateTodoDto } from "./dto/todo.dto";
+import { UpdateTodoDto } from "./dto/updateTodo.dto";
+import { Todo, TodoDocument } from "./schemas/todo.schema";
 
 @Injectable()
 export class TodosService {
@@ -14,22 +19,23 @@ export class TodosService {
   }
 
   async addTodo(todo: CreateTodoDto) {
-    const newTodo = this.todoModel.create(todo)
+    const newTodo = this.todoModel.create(todo);
     try {
-      return newTodo         
-      } catch (e) {
-        throw new ConflictException(e.message);
-      }
+      return newTodo;
+    } catch (e) {
+      throw new ConflictException(e.message);
+    }
   }
 
   async update(todoId: string, todo: UpdateTodoDto) {
+    console.log('ID',todoId);    
     const updatedTodo = await this.todoModel
-    .findByIdAndUpdate(todoId, todo)
-    .setOptions({ new: true });
-  if (!updatedTodo) {
-    throw new NotFoundException();
-  }
-  return updatedTodo;
+      .findByIdAndUpdate(todoId, todo)
+      .setOptions({ new: true });
+    if (!updatedTodo) {
+      throw new NotFoundException();
+    }
+    return updatedTodo;
   }
 
   async delete(todoId: string) {
@@ -37,6 +43,6 @@ export class TodosService {
     if (!result) {
       throw new NotFoundException();
     }
-    return 'Success'
+    return "Success";
   }
 }

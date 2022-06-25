@@ -12,7 +12,7 @@ import {
 import { CreateTodoDto } from "./dto/todo.dto";
 import { UpdateTodoDto } from "./dto/updateTodo.dto";
 
-@Controller("todos")
+@Controller('todos')
 export class TodosController {
   constructor(private todosService: TodosService) {}
 
@@ -26,13 +26,16 @@ export class TodosController {
     return this.todosService.addTodo(todo);
   }
 
-  @Patch(":id")
-  update(@Param() id: string, @Body() todo: UpdateTodoDto) {
-    return this.todosService.update(id, todo);
+  @Patch('/update/:id')
+  update(@Param() params, @Body() todo: UpdateTodoDto) {
+    console.log('todo', todo)
+    console.log('id', params.id)
+    return 'ok' 
+    // this.todosService.update(params.id, todo);
   }
 
-  @Delete(":id")
-  delete(@Param() id: string) {
-    return this.todosService.delete(id);
+  @Delete(':id')
+  delete(@Param() params) {
+    return this.todosService.delete(params.id);
   }
 }

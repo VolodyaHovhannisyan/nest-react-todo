@@ -10,5 +10,6 @@ import { Todo, TodoSchema } from './schemas/todo.schema';
   ],
   providers: [TodosService],
   controllers: [TodosController],
+  exports: [TodosModule]
 })
 export class TodosModule {}
