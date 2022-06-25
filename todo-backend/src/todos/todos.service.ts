@@ -26,14 +26,13 @@ export class TodosService {
       throw new ConflictException(e.message);
     }
   }
-
-  async update(todoId: string, todo: UpdateTodoDto) {
-    console.log('ID',todoId);    
+ 
+  async update(id: string, todo: UpdateTodoDto) {
     const updatedTodo = await this.todoModel
-      .findByIdAndUpdate(todoId, todo)
+      .findByIdAndUpdate(id, todo)
       .setOptions({ new: true });
     if (!updatedTodo) {
-      throw new NotFoundException();
+      throw new NotFoundException('Something went wrong');
     }
     return updatedTodo;
   }

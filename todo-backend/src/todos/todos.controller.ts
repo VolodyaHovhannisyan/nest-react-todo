@@ -21,20 +21,17 @@ export class TodosController {
     return this.todosService.findAllTodos();
   }
 
-  @Post("add")
+  @Post('add')
   add(@Body() todo: CreateTodoDto) {
     return this.todosService.addTodo(todo);
   }
 
   @Patch('/update/:id')
   update(@Param() params, @Body() todo: UpdateTodoDto) {
-    console.log('todo', todo)
-    console.log('id', params.id)
-    return 'ok' 
-    // this.todosService.update(params.id, todo);
+    return this.todosService.update(params.id, todo);
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   delete(@Param() params) {
     return this.todosService.delete(params.id);
   }
