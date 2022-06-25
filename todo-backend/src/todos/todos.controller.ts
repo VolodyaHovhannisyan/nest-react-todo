@@ -6,7 +6,6 @@ import {
   Delete,
   Patch,
   Body,
-  Req,
   Param,
 } from "@nestjs/common";
 import { CreateTodoDto } from "./dto/todo.dto";
@@ -33,7 +32,6 @@ export class TodosController {
 
   @Delete("/delete/:id")
   delete(@Param() params) {
-    console.log(`Todo with id ${params.id} deleted`);
     return this.todosService.delete(params.id);
   }
 }

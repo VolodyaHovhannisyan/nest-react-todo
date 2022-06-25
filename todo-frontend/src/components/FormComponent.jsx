@@ -1,40 +1,30 @@
 import { useState } from "react"
 import { Button, Form, Input, DatePicker } from 'antd';
 
-
 const FormComponent = ({ searchTodo, addTodo, todos }) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [search, setSearch] = useState(true)
-    // const [searchText, setSearchText] = useState('')
 
     const onFinish = () => {
 
-        if (!text) {
+        if (text.length === 0) {
             alert('Please add a todo')
             return
         }
 
-        // console.log(text, day);
         addTodo(text, day)
-
         setText('')
         setDay('')
     }
 
-    const onSearch = (value) => {
-        // setSearchText(value)
-        // searchTodo(value)
-        // alert(value)
-    }
-
     return (
         <>
-            {todos.length > 0 && <Button
+            {todos.length > 1 && <Button
                 className="m20"
                 block
-                onClick={() => setSearch(prev => !prev)}>{search && todos.length > 0 ? 'Add todo' : 'Search todo'}</Button>}
-            {(search && todos.length > 0)
+                onClick={() => setSearch(prev => !prev)}>{search && todos.length > 1 ? 'Add todo' : 'Search todo'}</Button>}
+            {(search && todos.length > 1)
                 ?
                 <Input.Search
                     placeholder="Search todo"
@@ -42,7 +32,6 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
                     enterButton="Search"
                     size="middle"
                     className="m20"
-                    onSearch={onSearch}
                     onChange={(e) => searchTodo(e.target.value)}
                 />
                 :

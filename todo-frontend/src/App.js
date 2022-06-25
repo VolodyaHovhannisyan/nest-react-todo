@@ -5,12 +5,10 @@ import MainComponent from './components/MainComponent';
 
 function App() {
   return (
-    <>
-      <Layout className='container'>
-        <HeaderComponent />
-        <MainComponent />
-      </Layout>
-    </>
+    <Layout className='container'>
+      <HeaderComponent />
+      <MainComponent />
+    </Layout>
   );
 }
 
