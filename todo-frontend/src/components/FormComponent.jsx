@@ -56,6 +56,7 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
                                 setDay(dateString)
                             }
                             }
+                            style={{display: 'block'}}
                             allowClear
                         />
                     </Form.Item>

@@ -49,7 +49,6 @@ const MainComponent = () => {
   const deleteTodo = async (id) => {
     deleteTodoFn(id)
     setTodos(todos.filter((todo) => todo._id !== id))
-
   }
 
   useEffect(() => {
