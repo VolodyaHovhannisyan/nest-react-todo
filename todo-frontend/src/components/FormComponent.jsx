@@ -12,6 +12,10 @@ const FormComponent = ({ searchTodo, addTodo, todos }) => {
             alert('Please add a todo')
             return
         }
+        if (day.length === 0) {
+            alert('Please add a day & time')
+            return
+        }
 
         addTodo(text, day)
         setText('')
